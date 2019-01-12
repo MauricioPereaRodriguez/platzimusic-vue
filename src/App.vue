@@ -3,12 +3,13 @@
     <img src="./assets/logo.png">
     <h1>Platzimusic</h1>
     <ul>
-      <li v-for="artist in artists">{{ artist.name }}</li>
+      <artist v-for="artist in artists" v-bind:artist="artist" v-bind:key="artist.mbid">{{ artist.name }}</artist>
     </ul>
   </div>
 </template>
 
 <script>
+  import Artist from './components/Artist'
   import getArtists from './api'
 
 export default {
@@ -17,6 +18,9 @@ export default {
     return {
       artists: []
     }
+  },
+  components:{
+    Artist
   },
   mounted: function(){
     const self = this;
